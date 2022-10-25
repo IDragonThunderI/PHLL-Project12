@@ -4,36 +4,33 @@ using namespace std;
 
 int main()
 {
-	system("chcp 1251");
-	system("cls");
-
 	int n, k = -1;
 	float s = 0;
 	char name[30];
 	struct Tovar
 	{
 		char name[30]; // Наименование
-		int kol; // Количество
-		float cena; // Цена
+		int amount; // Количество
+		float price; // Цена
 	}
 
 	mas[100]{}; // Массив структур
 
-	cout << "Введите кол-во товаров n: ";
+	cout << "Enter amount of product n: ";
 	cin >> n;
 
 	// Ввод значений полей стуктуры
 	for (int i = 0; i < n; i++)
 	{
-		cout << "\nНаименование: ";
+		cout << "\nName: ";
 		cin >> mas[i].name;
-		cout << "\nКоличество: ";
-		cin >> mas[i].kol;
-		cout << "\nЦена: ";
-		cin >> mas[i].cena;
+		cout << "\nAmount: ";
+		cin >> mas[i].amount;
+		cout << "\nPrice: ";
+		cin >> mas[i].price;
 	}
 
-	cout << "\nВведите наименование искомого товара: ";
+	cout << "\nEnter the name of the desired product: ";
 	cin >> name; // Искомый товар
 
 	for (int i = 0; i < n; i++)
@@ -41,19 +38,19 @@ int main()
 		// Поиск номера искомого товара
 		if (strcmp(name, mas[i].name) == 0) k = i;
 		// Подсчёт общей стоимости товаров на складе
-		s += mas[i].kol * mas[i].cena;
+		s += mas[i].amount * mas[i].price;
 
 		if (k != -1)
 		{
-			cout << "\n" << mas[k].name << " " << mas[k].kol << " " << mas[k].cena << endl;
+			cout << "\n" << mas[k].name << " " << mas[k].amount << " " << mas[k].price << endl;
 			break;
 		}
 	}
 
 	if (k == -1)
-		cout << "\nТовар не найден" << endl;
+		cout << "\nProduct not found" << endl;
 
-	cout << "\nОбщая стоимость товаров = " << s << endl;
+	cout << "\nTotal price of products = " << s << endl;
 
 	system("pause");
 	return 0;
